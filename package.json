@@ -1,7 +1,7 @@
 {
   "name": "gdata-js_bbo",
   "description": "Simple OAuth 2.0 GData API client",
-  "version": "3.0.1",
+  "version": "3.0.2_bbo",
   "author": {
     "name": "Simon Murtha-Smith + BBO modifs",
     "email": "baptiste.bouffaut@gmail.com"
