@@ -68,48 +68,48 @@ module.exports = function (client_id, client_secret, redirect_uri) {
       var width = 980;
 
       var resp = "<script type='text/javascript'>" +
-      "var left= (screen.width / 2) - (" + width + " / 2);" +
-      "var top = (screen.height / 2) - (" + height + " / 2);" +
-      "window.open('" + oauthBase + '/auth?' +
+        "var left= (screen.width / 2) - (" + width + " / 2);" +
+        "var top = (screen.height / 2) - (" + height + " / 2);" +
+        "window.open('" + oauthBase + '/auth?' +
         querystring.stringify(options) + "', 'auth', 'menubar=no,toolbar=no," +
         "status=no,width=" + width + ",height=" + height +
         ",toolbar=no,left=' + left + 'top=' + top);" +
-"</script>";
+        "</script>";
 
-res.end(resp + '<a target=_new href=\'' + oauthBase + '/auth?' +
-  querystring.stringify(options) + '\'>Authenticate</a>');
-} else {
-  doPost({
-    grant_type: 'authorization_code',
-    code: req.query.code,
-    client_id: clientID,
-    client_secret: clientSecret,
-    redirect_uri: redirectURI
-  }, function (err, tkn) {
-    if (!err && tkn && !tkn.error) {
-      token = tkn;
+      res.end(resp + '<a target=_new href=\'' + oauthBase + '/auth?' +
+        querystring.stringify(options) + '\'>Authenticate</a>');
+    } else {
+      doPost({
+        grant_type: 'authorization_code',
+        code: req.query.code,
+        client_id: clientID,
+        client_secret: clientSecret,
+        redirect_uri: redirectURI
+      }, function (err, tkn) {
+        if (!err && tkn && !tkn.error) {
+          token = tkn;
+        }
+
+        callback(err, tkn);
+      });
+    }
+  };
+
+  client.setToken = function (tkn) {
+    token = tkn;
+  };
+
+  client.getToken = function() {
+    return token;
+  };
+
+  client.getFeed = function (url, params, callback) {
+    if (!callback && typeof params === 'function') {
+      callback = params;
+      params = {};
     }
 
-    callback(err, tkn);
-  });
-}
-};
-
-client.setToken = function (tkn) {
-  token = tkn;
-};
-
-client.getToken = function() {
-  return token;
-};
-
-client.getFeed = function (url, params, callback) {
-  if (!callback && typeof params === 'function') {
-    callback = params;
-    params = {};
-  }
-
-  params.oauth_token = token.access_token;
+    params.oauth_token = token.access_token;
 
     // Don't request profile photos as JSON
     if (!/photos\/media/.test(url)) {
