@@ -1,0 +1,33 @@
+{
+  "name": "gdata-js_bbo",
+  "description": "Simple OAuth 2.0 GData API client",
+  "version": "3.0.1",
+  "author": {
+    "name": "Simon Murtha-Smith + BBO modifs",
+    "email": "baptiste.bouffaut@gmail.com"
+  },
+  "keywords": [
+    "google",
+    "gdata"
+  ],
+  "main": "gdata.js",
+  "dependencies": {
+    "request": "2.12.0"
+  },
+  "engines": {
+    "node": ">=0.8.0 <0.9.0"
+  },
+  "_from": "gdata-js@>=3.0.1 <4.0.0",
+  "_npmVersion": "1.3.21",
+  "_npmUser": {
+    "name": "smurthas",
+    "email": "simon@murtha-smith.com"
+  },
+  "maintainers": [
+    {
+      "name": "BBO",
+      "email": "baptiste.bouffaut@gmail.com"
+    }
+  ],
+  "directories": {}
+}
