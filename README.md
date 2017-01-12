@@ -21,3 +21,6 @@ Enter your consumer key and secret in test.js
     node test.js
 
 open http://localhost:8553
+
+## BBO Addons
+add xml/atom support
