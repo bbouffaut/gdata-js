@@ -1,3 +1,6 @@
+#BBO update:
+add some xml/atom support
+
 # gdata-js
 
 Simple Google Data API client for OAuth 2.0 with express + connect.
